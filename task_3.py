@@ -1,11 +1,25 @@
-def set_intervals(times):
+def set_intervals(times: list) -> set:
+    """
+    Он принимает список раз и возвращает набор интервалов
+
+    :param times: список целых чисел, где каждое целое число представляет время в секундах
+    :type times: list
+    :return: Набор целых чисел
+    """
     interval = []
     for time in range(0, len(times), 2):
         interval.extend(range(times[time], times[time + 1]))
     return set(interval)
 
 
-def appearance(intervals):
+def appearance(intervals: dict) -> int:
+    """
+    Берем интервалы урока, интервалы учеников, интервалы репетиторов и находим пересечение всех трех
+
+    :param intervals: интервалы урока, интервалы ученика, интервалы репетитора
+    :type intervals: dict
+    :return: Количество общих секунд между уроком, учеником и репититором.
+    """
     intervals_lesson = set_intervals(intervals["lesson"])
     intervals_pupil = set_intervals(intervals["pupil"])
     intervals_tutor = set_intervals(intervals["tutor"])
